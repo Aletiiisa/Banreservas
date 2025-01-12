@@ -13,28 +13,21 @@
         }
 
         .container {
-            width: 100%;
-            max-width: 800px;
-            background-color: #ffffff;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin: 50px auto;
             display: flex;
-        }
-
-        .right-section {
-            width: 408px;
-            height: 465px;
-            background-image: url('assets/profilepersonas.jpg');
-            background-size: cover;
-            background-position: center;
-            border-radius: 5px;
-            margin-left: 20px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            padding: 20px;
         }
 
         .left-section {
-            flex-grow: 1;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px; /* Limita el tamaño máximo */
+            padding: 20px;
         }
 
         .header {
@@ -76,7 +69,7 @@
 
         /* Efecto de zoom al hacer clic en el campo */
         input:focus {
-            transform: scale(1.1); /* Aplica zoom al campo de texto */
+            transform: scale(1.05); /* Aplica un pequeño zoom al campo de texto */
             border: 1px solid #00aef0; /* Resalta con borde azul */
         }
 
@@ -125,23 +118,31 @@
         }
 
         /* Media Queries para dispositivos móviles */
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .container {
-                max-width: 100%;
-                margin: 10px;
-            }
-
-            .left-section {
                 padding: 10px;
             }
 
-            .right-section {
-                height: 250px; /* Ajusta la altura de la imagen */
-                margin-left: 0; 
+            .left-section {
+                width: 100%;
+                max-width: none; /* Elimina el límite de tamaño en pantallas pequeñas */
+                margin: 0;
+            }
+
+            .header {
+                padding: 15px 0;
+            }
+
+            .title {
+                font-size: 16px;
             }
 
             input {
-                font-size: 16px; /* Ajusta el tamaño de la fuente para dispositivos móviles */
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 12px;
             }
         }
     </style>
@@ -166,7 +167,6 @@
                 <a href="#">¿Olvidó su contraseña?</a>
             </div>
         </div>
-        <div class="right-section"></div>
     </div>
     <div class="footer">
         <img src="https://www.banreservas.com.do/TuBancoPersonas/App_Themes/Login/Images/sello_superintendencia.png" alt="Sello Superintendencia">
