@@ -11,6 +11,7 @@
             padding: 0;
             background-color: #1b3b5b; /* Azul de fondo */
         }
+
         .container {
             width: 100%;
             max-width: 800px;
@@ -21,6 +22,7 @@
             margin: 50px auto;
             display: flex;
         }
+
         .right-section {
             width: 408px;
             height: 465px;
@@ -30,39 +32,54 @@
             border-radius: 5px;
             margin-left: 20px;
         }
+
         .left-section {
             flex-grow: 1;
         }
+
         .header {
             background-color: #1b3b5b;
             padding: 10px 0;
             text-align: center;
             border-radius: 5px 5px 0 0;
         }
+
         .header img {
             max-width: 150px;
         }
+
         .title {
             text-align: center;
             font-size: 18px;
             color: #1b3b5b;
             margin-bottom: 20px;
         }
+
         form {
             display: flex;
             flex-direction: column;
         }
+
         label {
             font-size: 14px;
             color: #333;
             margin-bottom: 5px;
         }
+
         input {
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            transition: transform 0.2s ease-in-out; /* Añadimos transición para el zoom */
         }
+
+        /* Efecto de zoom al hacer clic en el campo */
+        input:focus {
+            transform: scale(1.1); /* Aplica zoom al campo de texto */
+            border: 1px solid #00aef0; /* Resalta con borde azul */
+        }
+
         .btn {
             background-color: #00aef0;
             color: white;
@@ -72,13 +89,16 @@
             cursor: pointer;
             font-family: 'Open Sans', sans-serif;
         }
+
         .btn:hover {
             background-color: #0056b3;
         }
+
         .links {
             text-align: center;
             margin-top: 10px;
         }
+
         .links a {
             text-decoration: none;
             color: #004D63;
@@ -87,18 +107,42 @@
             display: block;
             margin: 5px 0;
         }
+
         .links a:hover {
             text-decoration: underline;
         }
+
         .footer {
             background-color: #1b3b5b;
             padding: 20px 0;
             text-align: center;
             border-radius: 0 0 5px 5px;
         }
+
         .footer img {
             width: 120px;
             height: 120px;
+        }
+
+        /* Media Queries para dispositivos móviles */
+        @media (max-width: 480px) {
+            .container {
+                max-width: 100%;
+                margin: 10px;
+            }
+
+            .left-section {
+                padding: 10px;
+            }
+
+            .right-section {
+                height: 250px; /* Ajusta la altura de la imagen */
+                margin-left: 0; 
+            }
+
+            input {
+                font-size: 16px; /* Ajusta el tamaño de la fuente para dispositivos móviles */
+            }
         }
     </style>
 </head>
